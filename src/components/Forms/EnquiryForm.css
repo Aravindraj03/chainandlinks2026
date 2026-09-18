@@ -1,0 +1,60 @@
+.enquiry-form {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.enquiry-form.is-compact { box-shadow: none; padding: 0; background: transparent; }
+.enquiry-form__head h3 { font-size: 22px; }
+.enquiry-form__head p { color: var(--text-secondary); font-size: 14px; margin-top: 6px; margin-bottom: 4px; }
+
+.enquiry-form__field { display: flex; flex-direction: column; gap: 7px; }
+.enquiry-form__field label { font-size: 13px; font-weight: 700; color: var(--text-secondary); }
+.enquiry-form__field input, .enquiry-form__field select {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 13px 14px;
+  font-size: 14.5px;
+  background: var(--bg-soft);
+  transition: border-color .2s;
+}
+.enquiry-form__field input:focus, .enquiry-form__field select:focus { border-color: var(--gold); outline: none; background: #fff; }
+.enquiry-form__field [aria-invalid='true'] { border-color: #d94b4b; }
+.enquiry-form__error { font-size: 12px; color: #d94b4b; font-weight: 600; }
+
+.enquiry-form--success { align-items: center; text-align: center; gap: 12px; padding: 40px 32px; }
+.enquiry-form--success svg { color: #2e9e5b; }
+.enquiry-form--success h4 { font-size: 20px; }
+.enquiry-form--success p { color: var(--text-secondary); font-size: 14px; }
+
+/* Inline horizontal variant (project hero "Enquire Now" bar) */
+.enquiry-bar {
+  background: var(--gradient-soft);
+  padding: clamp(28px, 4vw, 44px) 0;
+}
+.enquiry-bar__inner { text-align: center; }
+.enquiry-bar h3 { font-size: 24px; }
+.enquiry-bar p { color: var(--text-secondary); margin-top: 6px; }
+.enquiry-form--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 28px;
+  background: #fff;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.enquiry-form--inline .enquiry-form__field { flex: 1 1 170px; }
+.enquiry-form--inline .enquiry-form__field label { display: none; }
+.enquiry-form--inline button { flex: 0 0 auto; white-space: nowrap; }
+
+@media (max-width: 760px) {
+  .enquiry-form--inline { flex-direction: column; align-items: stretch; }
+  .enquiry-form--inline button { width: 100%; }
+}

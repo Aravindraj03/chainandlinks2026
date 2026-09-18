@@ -1,0 +1,33 @@
+.proximity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.proximity-accordion__item { border-bottom: 1px solid rgba(36,27,63,0.12); }
+.proximity-accordion__item button {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 4px;
+  font-weight: 700;
+  font-size: 15.5px;
+  color: var(--navy);
+  text-align: left;
+}
+.proximity-accordion__item button svg { transition: transform .25s var(--ease); color: var(--gold); }
+.proximity-accordion__item button svg.is-rotated { transform: rotate(180deg); }
+.proximity-accordion__panel { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-out); }
+.proximity-accordion__item.is-open .proximity-accordion__panel { max-height: 400px; }
+.proximity-accordion__note { font-size: 13.5px; color: var(--text-secondary); padding-bottom: 10px; }
+.proximity-accordion__panel ul { display: flex; flex-direction: column; gap: 8px; padding-bottom: 16px; }
+.proximity-accordion__panel li { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 4px; border-radius: 6px; }
+.proximity-accordion__panel li:hover { background: rgba(255,255,255,0.5); }
+.proximity-accordion__panel em { font-style: normal; font-weight: 700; color: var(--gold); }
+
+.proximity-map { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.proximity-map > div { border-radius: 0; }
+.proximity-map__badge {
+  position: absolute; bottom: 16px; left: 16px;
+  background: #fff; padding: 8px 16px; border-radius: 999px;
+  display: flex; align-items: center; gap: 6px;
+  font-weight: 700; font-size: 13px; color: var(--navy);
+  box-shadow: var(--shadow);
+}
+.proximity-map__badge svg { color: #d94b4b; }
+
+@media (max-width: 900px) { .proximity-grid { grid-template-columns: 1fr; gap: 32px; } }

@@ -1,0 +1,363 @@
+/* =========================================
+   HOME HERO
+========================================= */
+
+.home-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 650px;
+  overflow: hidden;
+}
+
+.home-hero__banner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero__bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   HOME FORM CARD
+========================================= */
+
+.home-hero__form-wrapper {
+  position: absolute;
+
+  top: 50%;
+  right: 5%;
+
+  transform: translateY(-50%);
+
+  z-index: 10;
+
+  /* width: 390px; */
+    width: 25%;
+
+  padding: 35px 30px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-radius: 18px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   PROJECT HERO
+========================================= */
+
+.project-hero {
+  position: relative;
+
+  min-height: min(100vh, 760px);
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding-top: var(--header-h);
+}
+
+.project-hero picture {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.project-hero__bg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   PROJECT FORM CARD
+========================================= */
+
+.project-hero__form-wrapper {
+  position: absolute;
+
+  top: 50%;
+  right: 5%;
+
+  transform: translateY(-50%);
+
+  z-index: 10;
+
+  width: 25%;
+
+  padding: 35px 30px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-radius: 18px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.hero-enquiry-card {
+  width: 100%;
+}
+
+.hero-enquiry-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-family: var(--font-heading);
+
+  font-size: 34px;
+  font-weight: 600;
+
+  color: var(--navy);
+}
+
+.hero-enquiry-card p {
+  margin: 8px 0 25px;
+
+  text-align: center;
+
+  font-family: var(--font-body);
+
+  font-size: 14px;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================
+   FORM FIELDS
+========================================= */
+
+.hero-form__field {
+  margin-bottom: 14px;
+}
+
+.hero-form__field input,
+.hero-form__field select {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  font-family: var(--font-body);
+
+  font-size: 14px;
+
+  color: var(--text);
+
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+.hero-form__field input::placeholder {
+  color: var(--text-muted);
+}
+
+.hero-form__field input:focus,
+.hero-form__field select:focus {
+  border-color: var(--navy);
+
+  box-shadow:
+    0 0 0 3px rgba(18, 59, 93, 0.08);
+}
+
+.hero-form__field select {
+  cursor: pointer;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.hero-form__btn {
+  width: 100%;
+  height: 52px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: var(--gold);
+
+  color: #ffffff;
+
+  font-family: var(--font-body);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.hero-form__btn:hover {
+  background: var(--gold-light);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Home */
+  .home-hero {
+    height: auto;
+    min-height: auto;
+
+    overflow: visible;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-hero__banner {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    inset: auto;
+  }
+
+  .home-hero__bg {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .home-hero__form-wrapper {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    transform: none;
+
+    width: calc(100% - 30px);
+
+    margin: 40px auto 30px;
+
+    padding: 30px 20px;
+
+    border-radius: 16px;
+  }
+
+
+  /* Project */
+  .project-hero {
+    min-height: auto;
+
+    height: auto;
+
+    padding-top: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: visible;
+  }
+
+  .project-hero picture {
+    position: relative;
+
+    inset: auto;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .project-hero__bg {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .project-hero__form-wrapper {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    transform: none;
+
+    width: calc(100% - 30px);
+
+    margin: 40px auto 30px;
+
+    padding: 30px 20px;
+
+    border-radius: 16px;
+  }
+
+
+  /* Form */
+  .hero-enquiry-card h2 {
+    font-size: 30px;
+  }
+
+  .hero-enquiry-card p {
+    margin-bottom: 22px;
+  }
+
+  .hero-form__field {
+    margin-bottom: 13px;
+  }
+
+  .hero-form__field input,
+  .hero-form__field select {
+    height: 48px;
+  }
+
+  .hero-form__btn {
+    height: 50px;
+  }
+}
