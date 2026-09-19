@@ -99,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      <FloatingActions onEnquireClick={scrollToForm} />
+      {/* <FloatingActions onEnquireClick={scrollToForm} /> */}
       <ContactTab onClick={scrollToForm} />
     </div>
   );

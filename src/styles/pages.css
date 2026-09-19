@@ -72,3 +72,138 @@
   display: block;
   object-fit: cover;
 }
+
+/* =========================================
+   THANK YOU PAGE
+========================================= */
+
+.thank-you-page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+.thank-you-desktop {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.thank-you-desktop .thank-you-banner {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.thank-you-logo-link {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  z-index: 10;
+  display: block;
+}
+
+.thank-you-logo {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+.thank-you-mobile {
+  display: none;
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+
+  .thank-you-desktop {
+    display: none;
+  }
+
+  .thank-you-mobile {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .thank-you-mobile .thank-you-banner {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .thank-you-mobile .thank-you-logo-link {
+    top: 15px;
+    left: 20px;
+  }
+
+  .thank-you-mobile .thank-you-logo {
+    width: 100px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .thank-you-mobile .thank-you-logo-link {
+    top: 12px;
+    left: 15px;
+  }
+
+  .thank-you-mobile .thank-you-logo {
+    width: 90px;
+  }
+}
+
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1600px) {
+
+  .thank-you-logo {
+    width: 140px;
+  }
+
+  .thank-you-logo-link {
+    top: 25px;
+    left: 40px;
+  }
+}

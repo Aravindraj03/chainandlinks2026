@@ -9,7 +9,7 @@ export function ContactTab({ onClick }) {
   )
 }
 
-export default function FloatingActions({ onEnquireClick, phone = '+918438598947' }) {
+export default function FloatingActions({ onEnquireClick, phone = '+918438598947' }) { 
   return (
     <div className="floating-actions">
       <a

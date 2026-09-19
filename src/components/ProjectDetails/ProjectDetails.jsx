@@ -94,7 +94,7 @@ export default function ProjectDetails({ project }) {
 
       <FAQAccordion items={project.faqs} />
 
-      <FloatingActions onEnquireClick={scrollToForm} />
+      {/* <FloatingActions onEnquireClick={scrollToForm} /> */}
       <ContactTab onClick={scrollToForm} />
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { projectList } from '../../data/projects.js'
 import './EnquiryForm.css'
 
@@ -9,6 +9,8 @@ export default function EnquiryForm({
   layout = 'card',
   id,
 }) {
+  const navigate = useNavigate()
+
   const initialProject = defaultProject || projectList[0].name
 
   const [form, setForm] = useState({
@@ -19,7 +21,6 @@ export default function EnquiryForm({
   })
 
   const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
@@ -28,7 +29,6 @@ export default function EnquiryForm({
       [e.target.name]: e.target.value,
     }))
 
-    // Clear field error while typing
     setErrors((prev) => ({
       ...prev,
       [e.target.name]: '',
@@ -38,14 +38,17 @@ export default function EnquiryForm({
   const validate = () => {
     const errs = {}
 
+    // Name
     if (!form.name.trim()) {
       errs.name = 'Please enter your name.'
     }
 
+    // Phone
     if (!/^[0-9]{10}$/.test(form.phone.trim())) {
       errs.phone = 'Please enter a valid 10-digit phone number.'
     }
 
+    // Email
     if (
       form.email &&
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
@@ -93,7 +96,9 @@ export default function EnquiryForm({
       console.log('Server response:', result)
 
       if (response.ok) {
-        setSubmitted(true)
+        // =========================================
+        // RESET FORM
+        // =========================================
 
         setForm({
           name: '',
@@ -102,9 +107,31 @@ export default function EnquiryForm({
           project: initialProject,
         })
 
-        setTimeout(() => {
-          setSubmitted(false)
-        }, 6000)
+        // =========================================
+        // PROJECT-BASED THANK YOU PAGE
+        // =========================================
+
+        let thankYouPath = '/'
+
+        if (form.project === 'Home') {
+          thankYouPath = '/home/thank-you'
+        } else if (form.project === 'Varam') {
+          thankYouPath = '/varam/thank-you'
+        } else if (form.project === 'Amber') {
+          thankYouPath = '/amber/thank-you'
+        } else if (form.project === 'Crossway Springs') {
+          thankYouPath = '/crossway-springs/thank-you'
+        }
+
+        // =========================================
+        // REDIRECT
+        // =========================================
+
+        navigate(thankYouPath, {
+          state: {
+            submitted: true,
+          },
+        })
       } else {
         alert('Something went wrong, please try again.')
       }
@@ -119,34 +146,6 @@ export default function EnquiryForm({
     }
   }
 
-  /* =========================================
-     SUCCESS MESSAGE
-  ========================================= */
-
-  if (submitted) {
-    return (
-      <div
-        id={id}
-        className={`enquiry-form enquiry-form--success ${
-          compact ? 'is-compact' : ''
-        } enquiry-form--${layout}`}
-      >
-        <CheckCircle2 size={36} />
-
-        <h4>Thank you!</h4>
-
-        <p>
-          Your enquiry has been received. Our team will
-          call you back shortly.
-        </p>
-      </div>
-    )
-  }
-
-  /* =========================================
-     FORM
-  ========================================= */
-
   return (
     <form
       id={id}
@@ -156,8 +155,8 @@ export default function EnquiryForm({
       onSubmit={handleSubmit}
       noValidate
     >
-
       {/* Header */}
+
       {!compact && (
         <div className="enquiry-form__head">
           <h3>Enquire Now</h3>
@@ -254,7 +253,7 @@ export default function EnquiryForm({
       </div>
 
       {/* =================================
-          SOURCE / PROJECT
+          PROJECT
       ================================= */}
 
       <div className="enquiry-form__field">
@@ -294,7 +293,6 @@ export default function EnquiryForm({
           ? 'Submitting...'
           : 'Book a Free Site Visit'}
       </button>
-
     </form>
   )
 }
