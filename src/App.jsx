@@ -9,22 +9,57 @@ import NotFound from './pages/NotFound.jsx'
 import VaramThankYou from './pages/VaramThankYou.jsx'
 import AmberThankYou from './pages/AmberThankYou.jsx'
 import CrosswayThankYou from './pages/crosswayThankYou.jsx'
-import HomeThankYou from './pages/HomeThankYou.jsx';
+import HomeThankYou from './pages/HomeThankYou.jsx'
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
+
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
         <Route path="/contact" element={<Contact />} />
+
+        {/* Direct Project URLs */}
+        <Route
+          path="/varam"
+          element={<ProjectDetailPage slug="varam" />}
+        />
+
+        <Route
+          path="/amber"
+          element={<ProjectDetailPage slug="amber" />}
+        />
+
+        <Route
+          path="/crossway-springs"
+          element={<ProjectDetailPage slug="crossway-springs" />}
+        />
+
+        {/* Thank You Pages */}
+        <Route
+          path="/varam/thank-you"
+          element={<VaramThankYou />}
+        />
+
+        <Route
+          path="/amber/thank-you"
+          element={<AmberThankYou />}
+        />
+
+        <Route
+          path="/crossway-springs/thank-you"
+          element={<CrosswayThankYou />}
+        />
+
+        <Route
+          path="/home/thank-you"
+          element={<HomeThankYou />}
+        />
+
         <Route path="*" element={<NotFound />} />
-        <Route path="/varam/thank-you" element={<VaramThankYou />} />
-        <Route path="/amber/thank-you" element={<AmberThankYou />} />
-        <Route path="/crossway-springs/thank-you" element={<CrosswayThankYou />} />
-        <Route path="/home/thank-you" element={<HomeThankYou />} />
+
       </Route>
     </Routes>
   )

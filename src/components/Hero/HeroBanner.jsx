@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./HeroBanner.css";
 
 /* =========================================
@@ -8,8 +10,13 @@ import "./HeroBanner.css";
 function HeroEnquiryForm({ projectName = "Home" }) {
   const navigate = useNavigate();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prevent multiple API calls
+    if (isSubmitting) return;
 
     const form = e.target;
     const formData = new FormData(form);
@@ -25,32 +32,35 @@ function HeroEnquiryForm({ projectName = "Home" }) {
     // VALIDATION
     // ================================
 
-    // Name
     if (!payload.name) {
       alert("Please enter your name");
       return;
     }
 
-    // Phone
     if (!/^[0-9]{10}$/.test(payload.phone)) {
       alert("Please enter a valid 10-digit phone number");
       return;
     }
 
-    // Email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
       alert("Please enter a valid email address");
       return;
     }
 
+    // Disable button immediately after validation
+    setIsSubmitting(true);
+
     try {
-      const response = await fetch("https://chainandlinks.com/sendmail.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://chainandlinks.com/sendmail.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const result = await response.text();
 
@@ -78,29 +88,28 @@ function HeroEnquiryForm({ projectName = "Home" }) {
         });
       } else {
         alert("Something went wrong, please try again.");
+
+        // Allow retry if API fails
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
 
       alert("Something went wrong, please try again.");
+
+      // Allow retry if API fails
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="hero-enquiry-card">
-      {/* =================================
-          FORM HEADER
-      ================================= */}
-
       <h2>Enquire Now</h2>
-
       <p>Get in touch for more information</p>
 
       <form onSubmit={handleSubmit}>
-        {/* =================================
-            NAME
-        ================================= */}
 
+        {/* NAME */}
         <div className="hero-form__field">
           <input
             type="text"
@@ -108,13 +117,11 @@ function HeroEnquiryForm({ projectName = "Home" }) {
             placeholder="Enter Name"
             autoComplete="name"
             required
+            disabled={isSubmitting}
           />
         </div>
 
-        {/* =================================
-            EMAIL
-        ================================= */}
-
+        {/* EMAIL */}
         <div className="hero-form__field">
           <input
             type="email"
@@ -122,13 +129,11 @@ function HeroEnquiryForm({ projectName = "Home" }) {
             placeholder="Enter Email"
             autoComplete="email"
             required
+            disabled={isSubmitting}
           />
         </div>
 
-        {/* =================================
-            PHONE
-        ================================= */}
-
+        {/* PHONE */}
         <div className="hero-form__field">
           <input
             type="tel"
@@ -138,23 +143,26 @@ function HeroEnquiryForm({ projectName = "Home" }) {
             inputMode="numeric"
             autoComplete="tel"
             required
+            disabled={isSubmitting}
           />
         </div>
 
-        {/* =================================
-            SOURCE
-            Hidden field
-        ================================= */}
+        {/* SOURCE */}
+        <input
+          type="hidden"
+          name="source"
+          value={projectName}
+        />
 
-        <input type="hidden" name="source" value={projectName} />
-
-        {/* =================================
-            SUBMIT
-        ================================= */}
-
-        <button type="submit" className="hero-form__btn">
-          Book a Free Site Visit
+        {/* SUBMIT */}
+        <button
+          type="submit"
+          className="hero-form__btn"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Book a Free Site Visit"}
         </button>
+
       </form>
     </div>
   );
@@ -167,19 +175,14 @@ function HeroEnquiryForm({ projectName = "Home" }) {
 export function HomeHeroBanner({ onEnquireClick }) {
   return (
     <section className="home-hero">
-      {/* =================================
-          HOME BANNER
-      ================================= */}
 
       <div className="home-hero__banner">
         <picture>
-          {/* Mobile Banner */}
           <source
             media="(max-width: 768px)"
             srcSet="/images/Banner/home-mobile-banner.jpeg"
           />
 
-          {/* Desktop Banner */}
           <img
             src="/images/Banner/home-banner.jpeg"
             alt="Chain and Links premium plots and villas in Chennai"
@@ -188,13 +191,10 @@ export function HomeHeroBanner({ onEnquireClick }) {
         </picture>
       </div>
 
-      {/* =================================
-          HOME FORM
-      ================================= */}
-
       <div className="home-hero__form-wrapper">
         <HeroEnquiryForm projectName="Home" />
       </div>
+
     </section>
   );
 }
@@ -206,15 +206,13 @@ export function HomeHeroBanner({ onEnquireClick }) {
 export function ProjectHeroBanner({ project, onEnquireClick }) {
   return (
     <section className="project-hero">
-      {/* =================================
-          PROJECT BANNER
-      ================================= */}
 
       <picture>
-        {/* Mobile Banner */}
-        <source media="(max-width: 768px)" srcSet={project.MobilebannerImage} />
+        <source
+          media="(max-width: 768px)"
+          srcSet={project.MobilebannerImage}
+        />
 
-        {/* Desktop Banner */}
         <img
           src={project.DesktopbannerImage}
           alt={`${project.name} premium plots in ${project.location}, Chennai`}
@@ -222,13 +220,10 @@ export function ProjectHeroBanner({ project, onEnquireClick }) {
         />
       </picture>
 
-      {/* =================================
-          PROJECT FORM
-      ================================= */}
-
       <div className="project-hero__form-wrapper">
         <HeroEnquiryForm projectName={project.name} />
       </div>
+
     </section>
   );
 }

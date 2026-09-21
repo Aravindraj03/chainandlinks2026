@@ -112,7 +112,7 @@ function ProjectSEO({ project, breadcrumbs }) {
     keywords: `${project.name}, plots in Chennai, residential plots Chennai, Chain and Links`,
   }
 
-  const url = `${SITE_URL}/projects/${slug}`
+  const url = `${SITE_URL}/${slug}`
   const ogImage = `${SITE_URL}${project.DesktopbannerImage || DEFAULT_OG_IMAGE}`
   const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs)
 

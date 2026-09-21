@@ -1,12 +1,12 @@
-import { useParams, Navigate } from 'react-router-dom'
 import ProjectDetails from '../components/ProjectDetails/ProjectDetails.jsx'
 import { getProject } from '../data/projects.js'
 
-export default function ProjectDetailPage() {
-  const { slug } = useParams()
+export default function ProjectDetailPage({ slug }) {
   const project = getProject(slug)
 
-  if (!project) return <Navigate to="/projects" replace />
+  if (!project) {
+    return <div>Project not found</div>
+  }
 
   return <ProjectDetails project={project} />
 }

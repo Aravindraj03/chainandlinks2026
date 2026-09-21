@@ -183,7 +183,7 @@ export default function Header() {
                   {projectList.map((project) => (
                     <Link
                       key={project.slug}
-                      to={`/projects/${project.slug}`}
+                      to={`/${project.slug}`}
                       onClick={() => {
                         setDropdownOpen(false);
                       }}
@@ -321,7 +321,7 @@ export default function Header() {
             {projectList.map((project) => (
               <Link
                 key={project.slug}
-                to={`/projects/${project.slug}`}
+                to={`/${project.slug}`}
                 className="mobile-nav__sublink"
                 onClick={() => setMobileOpen(false)}
               >

@@ -6,7 +6,7 @@ import './ProjectCard.css'
 export function ProjectCard({ project, index = 0 }) {
   return (
     <div className={`project-card reveal reveal-delay-${(index % 3) + 1}`}>
-      <Link to={`/projects/${project.slug}`} className="project-card__media">
+      <Link to={`/${project.slug}`} className="project-card__media">
         <img
           src={project.heroImage}
           alt={`${project.name} plots for sale in ${project.location}, Chennai`}
@@ -17,7 +17,7 @@ export function ProjectCard({ project, index = 0 }) {
         <div className="project-card__location"><MapPin size={14} /> {project.location}</div>
         <h3>{project.name}</h3>
         <p>{project.description.slice(0, 110)}&hellip;</p>
-        <Link to={`/projects/${project.slug}`} className="project-card__cta">
+        <Link to={`/${project.slug}`} className="project-card__cta">
           View Project <ArrowRight size={16} />
         </Link>
       </div>

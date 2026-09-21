@@ -31,7 +31,7 @@ export default function ProjectDetails({ project }) {
         breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Our Projects", path: "/projects" },
-          { name: project.name, path: `/projects/${project.slug}` },
+          { name: project.name, path: `/${project.slug}` },
         ]}
       />
 

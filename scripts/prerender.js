@@ -18,9 +18,9 @@ const routes = [
   '/',
   '/about',
   '/projects',
-  '/projects/varam',
-  '/projects/amber',
-  '/projects/crossway-springs',
+  '/varam',
+  '/amber',
+  '/crossway-springs',
   '/contact',
 ]
 

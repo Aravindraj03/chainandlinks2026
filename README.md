@@ -20,7 +20,7 @@ npm run preview   # preview the production build
 - `/` — Home (hero, about teaser, projects grid, testimonials, enquiry form)
 - `/about` — About Us
 - `/projects` — Projects listing (Varam, Amber, Ponmar)
-- `/projects/varam`, `/projects/amber`, `/projects/ponmar` — Project detail pages,
+- `/varam`, `/amber`, `/crossway-springs` — Project detail pages,
   all rendered from the single reusable `ProjectDetails` component + `src/data/projects.js`
 - `/contact` — Contact page with enquiry form + info card
 

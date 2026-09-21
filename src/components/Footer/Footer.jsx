@@ -56,7 +56,7 @@ export default function Footer() {
         <div className="site-footer__col">
           <p className="site-footer__heading">Our Projects</p>
           {projectList.map((p) => (
-            <Link key={p.slug} to={`/projects/${p.slug}`}>
+            <Link key={p.slug} to={`/${p.slug}`}>
               {p.name}
             </Link>
           ))}
