@@ -1,4 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
+
+import { useEffect } from 'react'
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom'
+
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
@@ -11,56 +19,85 @@ import AmberThankYou from './pages/AmberThankYou.jsx'
 import CrosswayThankYou from './pages/crosswayThankYou.jsx'
 import HomeThankYou from './pages/HomeThankYou.jsx'
 
+// Automatically convert uppercase URLs to lowercase
+function LowercaseRedirect() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const lowercasePath = location.pathname.toLowerCase()
+
+    if (location.pathname !== lowercasePath) {
+      navigate(
+        {
+          pathname: lowercasePath,
+          search: location.search,
+          hash: location.hash,
+        },
+        { replace: true }
+      )
+    }
+  }, [location, navigate])
+
+  return null
+}
+
 export default function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
+    <>
+      <LowercaseRedirect />
 
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
+      <Routes>
+        <Route element={<Layout />}>
 
-        {/* Direct Project URLs */}
-        <Route
-          path="/varam"
-          element={<ProjectDetailPage slug="varam" />}
-        />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route
-          path="/amber"
-          element={<ProjectDetailPage slug="amber" />}
-        />
+          {/* Direct Project URLs */}
+          <Route
+            path="/varam"
+            element={<ProjectDetailPage slug="varam" />}
+          />
 
-        <Route
-          path="/crossway-springs"
-          element={<ProjectDetailPage slug="crossway-springs" />}
-        />
+          <Route
+            path="/amber"
+            element={<ProjectDetailPage slug="amber" />}
+          />
 
-        {/* Thank You Pages */}
-        <Route
-          path="/varam/thank-you"
-          element={<VaramThankYou />}
-        />
+          <Route
+            path="/crossway-springs"
+            element={
+              <ProjectDetailPage slug="crossway-springs" />
+            }
+          />
 
-        <Route
-          path="/amber/thank-you"
-          element={<AmberThankYou />}
-        />
+          {/* Thank You Pages */}
+          <Route
+            path="/varam/thank-you"
+            element={<VaramThankYou />}
+          />
 
-        <Route
-          path="/crossway-springs/thank-you"
-          element={<CrosswayThankYou />}
-        />
+          <Route
+            path="/amber/thank-you"
+            element={<AmberThankYou />}
+          />
 
-        <Route
-          path="/home/thank-you"
-          element={<HomeThankYou />}
-        />
+          <Route
+            path="/crossway-springs/thank-you"
+            element={<CrosswayThankYou />}
+          />
 
-        <Route path="*" element={<NotFound />} />
+          <Route
+            path="/home/thank-you"
+            element={<HomeThankYou />}
+          />
 
-      </Route>
-    </Routes>
+          <Route path="*" element={<NotFound />} />
+
+        </Route>
+      </Routes>
+    </>
   )
 }
