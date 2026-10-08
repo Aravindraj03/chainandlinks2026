@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/images/Logo/chainlogo3.jpg" />
+  <link rel="icon" type="image/jpeg" href="/images/Logo/chainlogo3.jpg" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.chainandlinks.com/" />
@@ -18,7 +18,7 @@
 
   <meta
     name="description"
-    content="Chain & Links — premium DTCP-approved plots and villa communities across Chennai. Explore Varam in Padappai, Amber in Ponmar and Crossway Springs in Ponmar."
+    content="Chain & Links offers premium DTCP-approved plots and villa communities across Chennai. Explore Varam in Padappai, Amber in Ponmar and Crossway Springs in Ponmar."
   />
 
   <meta
@@ -31,7 +31,33 @@
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Chain & Links" />
+  <meta property="og:title" content="Chain & Links — Premium Plots & Villas in Chennai" />
+  <meta
+    property="og:description"
+    content="Explore premium DTCP-approved plots and villa communities in Chennai, including Varam, Amber and Crossway Springs."
+  />
+  <meta property="og:url" content="https://www.chainandlinks.com/" />
+  <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_IN" />
+
+  <!-- Replace with your actual social sharing image -->
+  <meta
+    property="og:image"
+    content="https://www.chainandlinks.com/images/Logo/chainlogo3.jpg"
+  />
+  <meta property="og:image:alt" content="Chain & Links" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chain & Links — Premium Plots & Villas in Chennai" />
+  <meta
+    name="twitter:description"
+    content="Premium DTCP-approved plots and villa communities across Chennai."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.chainandlinks.com/images/Logo/chainlogo3.jpg"
+  />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,18 +69,61 @@
   />
 
   <title>Chain & Links — Premium Plots & Villas in Chennai</title>
+
+  <!-- =========================================
+       META PIXEL
+  ========================================== -->
+
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {
+      if(f.fbq)return;
+
+      n=f.fbq=function(){
+        n.callMethod
+          ? n.callMethod.apply(n,arguments)
+          : n.queue.push(arguments)
+      };
+
+      if(!f._fbq)f._fbq=n;
+
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js'
+    );
+
+    fbq('init', '811818208243964');
+    fbq('track', 'PageView');
+  </script>
+
 </head>
 
 <body>
 
   <div id="root"></div>
 
-  <!-- React / Vite -->
+  <!-- =========================================
+       REACT / VITE
+  ========================================== -->
+
   <script type="module" src="/src/main.jsx"></script>
 
 
   <!-- =========================================
-       WATI WHATSAPP CHATBOT
+       ZOHO SALESIQ
   ========================================== -->
 
   <script>
@@ -64,7 +133,6 @@
     };
   </script>
 
-  <!-- Zoho SalesIQ -->
   <script
     id="zsiqscript"
     src="https://salesiq.zohopublic.in/widget?wc=siqa2a2b5a31638c8b2d966f82f71bf0010ee0d81564d53da9e6e8152460f05d945"
@@ -72,7 +140,9 @@
   </script>
 
 
-  <!-- WATI WhatsApp Widget -->
+  <!-- =========================================
+       WATI WHATSAPP WIDGET
+  ========================================== -->
 
   <script>
     var url =
@@ -85,30 +155,36 @@
     s.src = url;
 
     var options = {
-      "enabled": true,
+      enabled: true,
 
-      "chatButtonSetting": {
-        "backgroundColor": "#00e785",
-        "ctaText": "Chat with us",
-        "borderRadius": "25",
-        "marginLeft": "0",
-        "marginRight": "15",
-        "marginBottom": "80",
-        "ctaIconWATI": false,
-        "position": "right"
+      chatButtonSetting: {
+        backgroundColor: "#00e785",
+        ctaText: "Chat with us",
+        borderRadius: "25",
+        marginLeft: "0",
+        marginRight: "15",
+        marginBottom: "80",
+        ctaIconWATI: false,
+        position: "right"
       },
 
-      "brandSetting": {
-        "brandName": "Chain and Links",
-        "brandSubTitle": "Premium Plots & Villas in Chennai",
-        "brandImg": "https://chainandlinks.com/#hero",
-        "welcomeText": "Welcome to Chain and Links!!",
-        "messageText": "I'm interested in your project!!",
-        "backgroundColor": "#00e785",
-        "ctaText": "Chat with us",
-        "borderRadius": "25",
-        "autoShow": true,
-        "phoneNumber": "918438598947"
+      brandSetting: {
+        brandName: "Chain and Links",
+        brandSubTitle: "Premium Plots & Villas in Chennai",
+
+        /* IMPORTANT:
+           Use a direct image URL here.
+           Do not use https://chainandlinks.com/#hero
+        */
+        brandImg: "https://www.chainandlinks.com/images/Logo/chainlogo3.jpg",
+
+        welcomeText: "Welcome to Chain and Links!",
+        messageText: "I'm interested in your project!",
+        backgroundColor: "#00e785",
+        ctaText: "Chat with us",
+        borderRadius: "25",
+        autoShow: true,
+        phoneNumber: "918438598947"
       }
     };
 
@@ -120,6 +196,21 @@
 
     x.parentNode.insertBefore(s, x);
   </script>
+
+
+  <!-- =========================================
+       META PIXEL NOSCRIPT
+  ========================================== -->
+
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=811818208243964&ev=PageView&noscript=1"
+      alt=""
+    />
+  </noscript>
 
 </body>
 
